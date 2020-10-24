@@ -4,11 +4,11 @@
 
 #### 1) Exec in terminal the code below:
 
-npm i @babel/core @babel/preset-env @babel/preset-react babel-loader clean-webpack-plugin css-loader file-loader html-webpack-plugin nodemon style-loader webpack webpack-cli webpack-dev-server -D
+`npm i @babel/core @babel/preset-env @babel/preset-react babel-loader clean-webpack-plugin css-loader file-loader html-webpack-plugin nodemon style-loader webpack webpack-cli webpack-dev-server -D`
 
 #### 2) When it finish exec next code in terminal too:
 
-npm i core-js express morgan react react-dom react-router-dom
+`npm i core-js express morgan react react-dom react-router-dom`
 
 #### 3) Now you can start to code.
 
