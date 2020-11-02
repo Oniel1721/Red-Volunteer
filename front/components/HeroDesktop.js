@@ -15,7 +15,7 @@ const HeroDesktop = () => {
                         <div className='btn line pink'>
                             <p>Continúa con Facebook</p>
                         </div>
-                        <h4 className='pink'>Saltar</h4>
+                        {/* <h4 className='pink'>Saltar</h4> */}
                     </div>
                 </div>
                 <div className='right-heroDesktop'>
