@@ -5,7 +5,6 @@ import Services from '../components/Services'
 import Divider from '../components/Divider'
 import Team from '../components/Team'
 import Footer from '../components/Footer'
-import InicioSolicitante from './InicioSolicitante'
 
 const Home = () => {
     return (

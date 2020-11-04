@@ -1,13 +1,15 @@
-const path = require('path')
+const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './front/index.js',
     output: {
         filename: 'bundle.[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
+
     module: {
         rules: [
             {
@@ -31,6 +33,9 @@ module.exports = {
                 ],
               },
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({
         template: './public/index.html'
