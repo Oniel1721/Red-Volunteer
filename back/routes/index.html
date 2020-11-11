@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postman</title>
+</head>
+<body>
+    <h2>login</h2>
+
+    <form id="login" action="api/login" method="POST">
+        <input type="email" name="email" id="l-email" required>
+        <input type="password" name="password" id="l-password" required>
+        <button type="submit">Log</button>
+    </form>
+
+    <h2>signup</h2>
+
+    <form id="signup" action="api/signup" method="POST">
+        <input type="email" name="email" id="s-email" required>
+        <input type="password" name="password" id="s-password" required>
+        <button type="submit">Sign</button>
+    </form>
+
+    
+<script>
+    const d = document,
+        $login = d.getElementById('login'),
+        $signup = d.getElementById('signup')
+    
+    d.addEventListener('submit', e=>{
+        if(e.target === $login){
+            console.log('sending login...')
+        }
+
+        if(e.target === $signup){
+            console.log('sending signup...')
+        }
+    })
+    
+</script>
+
+</body>
+</html>

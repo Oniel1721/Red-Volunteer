@@ -12,7 +12,8 @@
 
 ### If you install a new module please write it here:
 
-`npm i module-example-name`
+#### By example `npm i module-example-name`
+`npm i react-facebook-login`
 
 ## Available Script
 

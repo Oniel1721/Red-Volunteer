@@ -1,7 +1,6 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login';
 
-
 const Login = ()=> {
 
     const responseFacebook = (response) => {
@@ -30,9 +29,8 @@ const Login = ()=> {
             autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook} 
-            textButton="continua con facebook"
+            textButton=" Continua con Facebook"
             icon="fa-facebook"
-            cssClass="" //Put the css class here
             />
         </div>
     )

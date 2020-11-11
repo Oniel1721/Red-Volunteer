@@ -1,5 +1,6 @@
 import React from 'react'
 import SvgHero from '../components/SvgHero'
+import Login from './FacebookLogin'
 
 const HeroDesktop = () => {
     return (
@@ -15,6 +16,7 @@ const HeroDesktop = () => {
                         <div className='btn line pink'>
                             <p>Continúa con Facebook</p>
                         </div>
+                        <Login></Login>
                         {/* <h4 className='pink'>Saltar</h4> */}
                     </div>
                 </div>
