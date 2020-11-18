@@ -21,7 +21,8 @@ class DataBase {
 
     addNewUser(data, cb){
         this.openDB()
-        const {email, password} = data
+        const {name, last, blood, user, email, password} = data,
+        id = Date.now()+name[0]
         let save = true
         this.currentData.users.forEach(el=>{
             if(el.email === email){
@@ -31,13 +32,17 @@ class DataBase {
         })
         if(save){
             const newUser = {
-                "ïd": Date.now(),
+                "ïd": id,
+                "name": name,
+                "lastname": last,
+                "bloodtype": blood,
+                "usertype": user,
                 "email": email,
                 "password": password
             }
             this.currentData.users.push(newUser)
             this.saveDB()
-            return cb(null, "Done")
+            return cb(null, "Done", {id, name, last, blood, user})
         }
     }
 
