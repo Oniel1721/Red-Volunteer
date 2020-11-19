@@ -6,14 +6,15 @@ class Session{
     }
 
     openSession(id){
+        console.log("adding id to session: "+id)
         localStorage.setItem("userID", id)
         this.isOpen = true
     }
     
-    closeSession(path=""){
+    closeSession(e,path="/"){
+        console.log(e)
         localStorage.removeItem("userID")
-        this.isOpen = false
-        if(path) this.redirect(path)
+        window.location.assign(window.location.origin+path)
     }
     
     redirect(path = ""){
@@ -43,11 +44,17 @@ class Session{
             .then((text) => {
                 let json = JSON.parse(text)
                 console.log("server answer",json);
-                if (json.OK) this.redirect(success)
-                else this.redirect(fail)
+                if (json.OK){
+                    this.redirect(success)
+                }
+                else{
+                    this.redirect(fail)
+                } 
               })
             .catch((err) =>{
-                console.log(err);
+                console.log("catch fetch: ",err);
+                alert("redirect error" + fail)
+                this.redirect(fail)
             }); 
         }
         else{
@@ -85,9 +92,6 @@ export const handleLocalLogin = function(e){
             session.openSession(json.user.id)
             session.redirect("/solicitante")
         }
-        else{
-            session.closeSession()
-        }
     })
     .catch((err) =>{
       console.log(err);
@@ -117,9 +121,6 @@ export const handleLocalSignup = function(e){
       if(json.OK){
             session.openSession(json.user.id)
             session.redirect("/solicitante")
-        }
-        else{
-            session.closeSession()
         }
     })
     .catch((err) =>{

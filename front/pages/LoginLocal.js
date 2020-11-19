@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import session,{handleLocalLogin} from '../logic/sessions'
 
 const LoginLocal = function(){
-    session.checkSession("/")
+    // session.checkSession("/", "")
     return(
         <div>
             <Link to="/">HOME</Link>
