@@ -1,12 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import session, {handleLocalSignup} from '../logic/sessions'
 
 const SignupLocal = function(){
+    session.checkSession("/")
     return(
         <div>
-            <Link to="/">Go Back</Link>
+            <Link to="/">HOME</Link>
             <h2>signup</h2>
-            <form id="signup" action="http://localhost:7000/api/signup" method="POST">
+            <form id="signup" action="http://localhost:7000/api/signup" method="POST" onSubmit={handleLocalSignup}>
                 <label>Name</label>
                 <input type="text" name="name" id="s-name" required/>
                 <br/>
@@ -25,8 +27,9 @@ const SignupLocal = function(){
                 <label>Password</label>
                 <input type="password" name="password" id="s-password" required/>
                 <br/>
-                <button type="submit">Sign</button>
+                <button type="submit" >Sign</button>
             </form>
+            <Link to="/login-local">Login Local</Link>
         </div>
     )
 }

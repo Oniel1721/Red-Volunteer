@@ -22,7 +22,7 @@ class DataBase {
     addNewUser(data, cb){
         this.openDB()
         const {name, last, blood, user, email, password} = data,
-        id = Date.now()+name[0]
+        userId = Date.now()+name[0]
         let save = true
         this.currentData.users.forEach(el=>{
             if(el.email === email){
@@ -32,7 +32,7 @@ class DataBase {
         })
         if(save){
             const newUser = {
-                "ïd": id,
+                "userId": userId,
                 "name": name,
                 "lastname": last,
                 "bloodtype": blood,
@@ -42,7 +42,7 @@ class DataBase {
             }
             this.currentData.users.push(newUser)
             this.saveDB()
-            return cb(null, "Done", {id, name, last, blood, user})
+            return cb(null, "Done", {id: userId, name, last, blood, user})
         }
     }
 
@@ -52,15 +52,41 @@ class DataBase {
         this.currentData.users.forEach(el=>{
             if(el.email === email){
                 if(el.password === password){
-                    return cb(null, "Done")
+                    const {userId, name, last, blood, user} = el
+                    console.log("Success")
+                    return cb(null, "Success", {id: userId, name, last, blood, user})
                 }
+                console.log("Wrong Password")
                 return cb(true, "Wrong Password")
             }
         })
         this.saveDB()
+        console.log("Email does not exist")
         return cb(true, "Email does not exist")
     }
 
+    findUserById(clientId, cb){
+        this.openDB()
+        console.log("buscando usuario por id", clientId)
+        this.currentData.users.forEach(el=>{
+            if(el.userId === clientId){
+                const {userId, name, last, blood, user} = el
+                console.log("bien id", clientId)
+
+                return cb(null, "User Founded.", {id: userId, name, last, blood, user})
+            }
+            else{
+                console.log("no coincide")
+                console.log(el.userId === clientId),
+                console.log("el",el)
+                console.log("el.id", el.userId)
+                console.log("clientId", clientId)
+                console.log("-----------------------")
+            }
+        })
+        this.saveDB()
+        return cb(true, "That id does not exist.")
+    }
 }
 
 module.exports = new DataBase()

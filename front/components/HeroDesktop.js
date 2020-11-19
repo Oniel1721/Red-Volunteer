@@ -1,6 +1,8 @@
 import React from 'react'
 import SvgHero from '../components/SvgHero'
 import Login from './FacebookLogin'
+import {Link} from 'react-router-dom'
+
 
 const HeroDesktop = () => {
     return (
@@ -16,7 +18,9 @@ const HeroDesktop = () => {
                         <div className='btn line pink'>
                             <p>Continúa con Facebook</p>
                         </div>
-                        <Login></Login>
+                        {/* <Login></Login> */}
+                        <Link to="/login-local">Local Login</Link>
+                        <Link to="/signup-local">Local Signup</Link>
                         {/* <h4 className='pink'>Saltar</h4> */}
                     </div>
                 </div>

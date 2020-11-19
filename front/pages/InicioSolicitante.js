@@ -6,10 +6,13 @@ import IconAjustes from '../images/IconSettings.png'
 import FormSolicitar from '../components/FormSolicitar'
 import ScreenPeticiones from '../components/ScreenPeticiones'
 import DonadoresMatch from '../components/DonadoresMatch'
+import CloseSession from '../components/CloseSession'
 import '../styles/solicitante.css'
+import session from '../logic/sessions'
+
 
 const InicioSolicitante = () => {
-
+    session.checkSession("","/")
     const handleChoose = (e)=>{
 
         let arrayChoose = document.querySelectorAll('.select')
@@ -44,6 +47,7 @@ const InicioSolicitante = () => {
 
     return (
         <div className='solicitante'>
+            <CloseSession></CloseSession>
             <div className='content-solicitante container'>
 
                 <h1>Hola, Nombre!</h1>

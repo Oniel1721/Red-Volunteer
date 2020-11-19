@@ -4,8 +4,10 @@ import IconUsuarios from '../images/IconUsuario.png'
 import ImgSolicitante from '../images/IconSolicitante.png'
 import ImgDonante from '../images/IconDonante.png'
 import '../styles/TipoUsuario.css'
+import session from '../logic/sessions'
 
 const TipoUsuario = () => {
+    session.checkSession("","/")
     return (
         <div className='usuarios'>
             <div className='content-usuarios container'>

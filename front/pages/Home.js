@@ -7,13 +7,13 @@ import Divider from '../components/Divider'
 import Team from '../components/Team'
 import Footer from '../components/Footer'
 import Login from '../components/FacebookLogin'
+import session from '../logic/sessions'
 
 const Home = () => {
+    session.checkSession("/solicitante")
     return (
         <div>
             {/* <Login /> */}
-            <Link to="/login-local">Login</Link>
-            <Link to="/signup-local">Signup</Link>
             <Hero />
             <HeroDesktop />
             <Services />
