@@ -7,6 +7,7 @@ import Team from '../components/Team'
 import Footer from '../components/Footer'
 import Login from '../components/FacebookLogin'
 import session from '../logic/sessions'
+import '../styles/Home.css'
 
 const Home = () => {
     session.checkSession("/solicitante")
