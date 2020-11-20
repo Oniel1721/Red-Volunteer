@@ -13,12 +13,14 @@ const FormSolicitar = () => {
                         <label for="fname">Tipo de sangre:</label>
                         <select id="bloodType" form="formSolicitar" required>
                             <option value="0" selected disabled hidden></option>
-                            <option value="1">no</option>
-                            <option value="2">sé</option>
-                            <option value="3">cuántos</option>
-                            <option value="4">tipos</option>
-                            <option value="5">hay</option>
-                            <option value="6">xd</option>
+                            <option value="1">A+</option>
+                            <option value="2">B+</option>
+                            <option value="3">AB+</option>
+                            <option value="4">A-</option>
+                            <option value="5">B-</option>
+                            <option value="6">AB-</option>
+                            <option value="5">O+</option>
+                            <option value="6">O-</option>
                         </select>
                     </div>
                     <div className='line-input'>
