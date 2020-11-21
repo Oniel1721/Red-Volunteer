@@ -1,0 +1,177 @@
+/* Base */
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    min-height: 100%;
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    max-width: 100vw;
+    margin: auto;
+}
+img{
+    max-width: 100%;
+}
+h1,h2,h3,h4,h5,h6,p,span{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+
+
+/* Registro */
+.signupLocal h2{
+    margin-bottom: 2rem;
+}
+.columna{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+}
+.fila{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.signupLocal{
+    background-color: white;
+    padding: 2rem;
+}
+#signup label{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 0.7rem;
+}
+#signup input, #signup select{
+    background: #DBDADA;
+    border-radius: 8px;
+    height: 28px;
+    padding: 0.3rem;
+    outline: none;
+    border: none;
+}
+#signup select option{
+    background-color: #f0eeee;
+}
+#login label{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 0.7rem;
+}
+#login input{
+    background: #DBDADA;
+    border-radius: 8px;
+    height: 28px;
+    padding: 0.3rem;
+    outline: none;
+    border: none;
+}
+.extra-btn{
+    width: 160px;
+    height: 40px;  
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+}
+.extra-btn.red{
+    background: #C75146;
+}
+.extra-btn.blue{
+    background: #6593AD
+}
+.last-info{
+    margin-top: 4rem;
+}
+.divider{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.divider hr{
+    width: 30%;
+    margin: 3rem 0;
+}
+.svgLogin{
+    display: none;
+}
+
+/* Responsive Desktop */
+@media only screen and (min-width: 1024px) {
+    .signupLocal{
+        padding: 0;
+        display: flex;
+    }
+    .svgLogin{
+        display: block;
+        background-color: #C75146;
+        width: 50%;
+        height: 100vh;
+    }
+    .rightLogin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        padding: 0 3rem;
+    }
+    #signup input, #signup select{
+        background: #DBDADA;
+        border-radius: 8px;
+        height: 32px;
+        padding: 0.3rem;
+    }
+    #login input{
+        background: #DBDADA;
+        border-radius: 8px;
+        height: 32px;
+        padding: 0.3rem;
+    }
+    .divider{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .divider hr{
+        width: 35%;
+    }
+    .extra-btn{
+        width: 170px;
+        height: 45px;
+        cursor: pointer;
+    }
+    .fila{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .svgLogin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #Left{
+        animation: left 1.2s ease;
+    }
+    @keyframes left{
+        from{
+            transform: translateX(-300px);
+            opacity: 0;
+        }to{
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import SvgHero from '../components/SvgHero'
+import Login from './FacebookLogin'
+import {Link} from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -10,13 +12,11 @@ const Hero = () => {
                     <SvgHero/>
                 </div>
                 <div className='content-btn'>
+                    <Link to="/signup">
                     <div className='btn bg-pink brown'>
-                        <p>Continúa con Google</p>
+                        <p>Comenzar</p>
                     </div>
-                    <div className='btn line pink'>
-                        <p>Continúa con Facebook</p>
-                    </div>
-                    <h4 className='pink'>Saltar</h4>
+                    </Link>
                 </div>
             </div>
         </div>
