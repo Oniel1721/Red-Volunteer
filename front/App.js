@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import InicioSolicitante from './pages/InicioSolicitante';
 import LoginLocal from './pages/LoginLocal'
 import SignupLocal from './pages/SignupLocal'
-import './styles/app.css';
+// import './styles/app.css';
 
 function App() {
   return (

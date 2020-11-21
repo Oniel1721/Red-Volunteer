@@ -3,11 +3,17 @@ import {Link} from 'react-router-dom'
 import googleIcon from '../images/googleIcon.png'
 import facebookIcon from '../images/facebookIcon.png'
 import LoginSvg from '../components/LoginSvg'
-import session,{handleLocalLogin} from '../logic/sessions'
+import session from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
-const LoginLocal = function(){
+const LoginLocal = () =>{
     session.checkSession("/solicitante", "")
+
+    const handleLocalLogin =(e)=>{
+        e.preventDefault()
+        session.login()
+    }
+
     return(
         <div className='signupLocal'>
 
