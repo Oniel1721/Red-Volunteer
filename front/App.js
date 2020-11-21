@@ -11,8 +11,8 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/solicitante' component={InicioSolicitante}/>
-        <Route exact path='/login-local' component={LoginLocal}/>
-        <Route exact path='/signup-local' component={SignupLocal}/>
+        <Route exact path='/login' component={LoginLocal}/>
+        <Route exact path='/signup' component={SignupLocal}/>
       </Switch>
     </BrowserRouter>
   );

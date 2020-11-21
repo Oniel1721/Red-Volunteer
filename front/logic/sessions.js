@@ -1,4 +1,7 @@
-const d = document
+const d = document,
+urlDev = 'http://localhost:7000',
+urlPro = '',
+currentUrl = urlDev
 
 class Session{
     constructor(){
@@ -28,7 +31,7 @@ class Session{
         const id = localStorage.getItem("userID")
         if(id){
             const data = new FormData(),
-            url = 'http://localhost:7000/api/user/id'
+            url = currentUrl+'/api/user/id'
             data.append("id", id)
             fetch(url, {
                 method: "POST",
@@ -71,7 +74,7 @@ export const handleLocalLogin = function(e){
     e.preventDefault()
     const $form = d.getElementById("login"),
         data = new FormData($form),
-        url = 'http://localhost:7000/api/login'
+        url = currentUrl+'/api/login'
     
     
     fetch(url, {
@@ -102,7 +105,7 @@ export const handleLocalSignup = function(e){
     e.preventDefault()
     const $form = d.getElementById("signup"),
         data = new FormData($form),
-        url = 'http://localhost:7000/api/signup'
+        url = currentUrl+'/api/signup'
     
     fetch(url, {
         method: "POST",

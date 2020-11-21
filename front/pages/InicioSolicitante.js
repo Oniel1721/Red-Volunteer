@@ -12,7 +12,7 @@ import session from '../logic/sessions'
 
 
 const InicioSolicitante = () => {
-    session.checkSession("","/")
+    session.checkSession("","/login")
     const handleChoose = (e)=>{
 
         let arrayChoose = document.querySelectorAll('.select')

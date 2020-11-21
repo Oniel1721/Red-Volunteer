@@ -10,7 +10,6 @@ import session from '../logic/sessions'
 import '../styles/Home.css'
 
 const Home = () => {
-    session.checkSession("/solicitante")
     return (
         <div>
             {/* <Login /> */}

@@ -7,7 +7,7 @@ import session,{handleLocalLogin} from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
 const LoginLocal = function(){
-    // session.checkSession("/", "")
+    session.checkSession("/solicitante", "")
     return(
         <div className='signupLocal'>
 
@@ -36,7 +36,7 @@ const LoginLocal = function(){
                 <hr/>
             </div>
 
-            <form id="login" action="http://localhost:7000/api/login" method="POST" onSubmit={handleLocalLogin}>
+            <form id="login" onSubmit={handleLocalLogin}>
 
                 <div className='columna'>
                     <label>Email</label>
@@ -52,7 +52,7 @@ const LoginLocal = function(){
             </form>
 
             <p className='last-info'>¿Aún no tienes cuenta?</p>
-            <Link to="/signup-local">Crear cuenta</Link>
+            <Link to="/signup">Crear cuenta</Link>
             </div>
         </div>
     )
