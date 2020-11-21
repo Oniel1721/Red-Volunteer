@@ -24,7 +24,7 @@ const Login = ()=> {
     return(
         <div className="facebookLogin">
             <FacebookLogin
-            appId="884544232070914"
+            appId="405429787148913"
             autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook} 
