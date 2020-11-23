@@ -1,11 +1,10 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login';
 
-const Login = ()=> {
+const LoginFB = ()=> {
 
     const responseFacebook = (response) => {
         
-        console.log(response);
         var url = 'https://http://localhost:7000';
         var data = response;
         
@@ -18,7 +17,6 @@ const Login = ()=> {
         })
         .then(res => res.json())
         .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success;', response)); 
     }
 
     return(
@@ -35,4 +33,4 @@ const Login = ()=> {
     )
 }
 
-export default Login;
+export default LoginFB;

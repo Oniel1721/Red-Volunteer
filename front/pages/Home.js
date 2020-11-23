@@ -5,7 +5,7 @@ import Services from '../components/Services'
 import Divider from '../components/Divider'
 import Team from '../components/Team'
 import Footer from '../components/Footer'
-import Login from '../components/FacebookLogin'
+import LoginFB from '../components/FacebookLogin'
 import session from '../logic/sessions'
 import '../styles/Home.css'
 

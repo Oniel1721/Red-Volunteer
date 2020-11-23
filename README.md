@@ -15,6 +15,7 @@
 #### By example `npm i module-example-name`
 
 `npm i react-facebook-login`
+`npm i react-google-login`
 `npm i cors`
 `npm i express-formidable`
 
