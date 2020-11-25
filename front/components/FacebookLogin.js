@@ -26,8 +26,9 @@ const LoginFB = ()=> {
             autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook} 
-            textButton=" Continua con Facebook"
+            textButton="Facebook"
             icon="fa-facebook"
+            cssClass='extra-btn blue'
             />
         </div>
     )

@@ -23,10 +23,11 @@ const LoginG = ()=>{
         <div>
             <GoogleLogin
                 clientId="143556844542-518dd6usp3hdv4tnilcs5godeagfps55.apps.googleusercontent.com"
-                buttonText="Continua con google"
+                buttonText="Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
             />,
         </div>
     )
