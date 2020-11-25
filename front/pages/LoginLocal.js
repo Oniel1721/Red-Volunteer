@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import googleIcon from '../images/googleIcon.png'
 import facebookIcon from '../images/facebookIcon.png'
+import LoginG from '../components/GoogleLogin'
+import LoginFB from '../components/FacebookLogin'
 import LoginSvg from '../components/LoginSvg'
 import session from '../logic/sessions'
 import '../styles/SignupLocal.css'
@@ -26,13 +28,11 @@ const LoginLocal = () =>{
             <h2>Iniciar Sesión</h2>
 
             <div className='fila'>
-                <div className='extra-btn red'>
-                    <img src={googleIcon} alt='google' />
-                    <p>Google</p>
+                <div>
+                    <p><LoginG></LoginG></p>
                 </div>
-                <div className='extra-btn blue'>
-                    <img src={facebookIcon} alt='facebook' />
-                    <p>Facebook</p>
+                <div>
+                    <p><LoginFB></LoginFB></p>
                 </div>
             </div>
 
