@@ -6,7 +6,7 @@ const LoginG = ()=>{
 
     const responseGoogle =(response)=>{
         
-        var url = 'https://http://localhost:7000';
+        var url = 'http://localhost:7000';
         var data = response;
         
         fetch(url, {
@@ -23,7 +23,7 @@ const LoginG = ()=>{
         <div>
             <GoogleLogin
                 clientId="143556844542-518dd6usp3hdv4tnilcs5godeagfps55.apps.googleusercontent.com"
-                buttonText="Google"
+                buttonText="Sign in with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
