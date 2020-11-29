@@ -6,13 +6,13 @@ const Hero = () => {
     return (
         <div className='hero bg-red'>
             <div className='content-hero container'>
-                <div className='hero-top bg-pink'>
+                <div className='hero-top bg-white'>
                     <h1>APP NAME</h1>
                     <SvgHero/>
                 </div>
                 <div className='content-btn'>
                     <Link to="/signup">
-                    <div className='btn bg-pink brown'>
+                    <div className='btn bg-white brown'>
                         <p>Comenzar</p>
                     </div>
                     </Link>

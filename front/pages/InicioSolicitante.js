@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import IconInicio from '../images/IconHomeOn.png'
 import IconPeople from '../images/IconPeople.png'
 import iconChat from '../images/IconChat.png'
@@ -6,7 +7,6 @@ import IconAjustes from '../images/IconSettings.png'
 import FormSolicitar from '../components/FormSolicitar'
 import ScreenPeticiones from '../components/ScreenPeticiones'
 import DonadoresMatch from '../components/DonadoresMatch'
-import CloseSession from '../components/CloseSession'
 import '../styles/solicitante.css'
 import session from '../logic/sessions'
 
@@ -47,7 +47,7 @@ const InicioSolicitante = () => {
 
     return (
         <div className='solicitante'>
-            <CloseSession></CloseSession>
+            
             <div className='content-solicitante container'>
 
                 <h1>Hola, Nombre!</h1>
@@ -72,8 +72,12 @@ const InicioSolicitante = () => {
                     <div className='content-menu container'>
                         <img src={IconInicio} alt='icon'/>
                         <img src={IconPeople} alt='icon'/>
+                        <Link to='/solicitante/chatList'>
                         <img src={iconChat} alt='icon'/>
+                        </Link>
+                        <Link to='/solicitante/settings'>
                         <img src={IconAjustes} alt='icon'/>
+                        </Link>
                     </div>
                 </div>
                 

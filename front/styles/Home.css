@@ -75,6 +75,9 @@ a{
 .bg-blue{
     background-color: #10182F;
 }
+.bg-white{
+    background-color: white;
+}
 
 /* Hero */
 .hero-top{
@@ -274,7 +277,7 @@ a{
         margin: 0 auto;
     }
     .right-heroDesktop{
-        background: #F8E5EE;
+        background: white;
         border-radius: 500px 0px 0px 500px;
         padding: 20rem 5rem;
     }

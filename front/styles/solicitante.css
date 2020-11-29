@@ -105,6 +105,7 @@ a{
     padding: 1rem;
     bottom: 0;
     width: 90%;
+    background-color: white;
 }
 .content-menu{
     display: flex;
@@ -181,4 +182,138 @@ a{
 }
 .decision img{
     margin-right: 1rem;
+}
+
+/* Chat */
+.chat-list{
+    background-color: #C75146;
+}
+.chat-list h2{
+    color: white;
+    padding: 2rem 0 0 2rem;
+}
+.content-chat-list{
+    margin-top: 5rem;
+    border-radius: 22px 22px 0 0;
+    background-color: white;
+    padding: 2rem;
+    height: 80vh;
+    overflow-y: scroll;
+}
+.card-chat{
+    display: flex;
+    align-items: center;
+    margin: 2.5rem 0;
+}
+.chat-sangre{
+    background-color: #C75146;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chat-sangre h3{
+    font-size: 1.7rem;
+    color: white;
+    font-weight: 700;
+}
+.card-chat p{
+    color: black;
+    margin-left: 1.5rem;
+}
+
+/* Ajustes */
+.ajustes{
+    padding: 2rem;
+}
+.pack{
+    margin: 4rem 0;
+}
+.pack-top{
+    display: flex;
+    align-items: flex-end;
+}
+.pack-top img{
+    margin-right: 1rem;
+}
+.pack p{
+    color: #a9a9a7;
+    margin: 0.8rem 0;
+}
+.ajustes-opcion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 22px;
+}
+  
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #C75146;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #C75146;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.btn-out{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(236, 233, 233);
+    border-radius: 50px;
+    padding: 1rem;
+    width: 170px;
 }
