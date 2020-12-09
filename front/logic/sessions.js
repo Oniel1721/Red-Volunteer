@@ -106,6 +106,8 @@ export const handleLocalSignup = function(e){
     const $form = d.getElementById("signup"),
         data = new FormData($form),
         url = currentUrl+'/api/signup'
+        data.append("blood", document.getElementById("s-blood").value)
+        data.append("user", document.getElementById("s-user").value)
     
     fetch(url, {
         method: "POST",
