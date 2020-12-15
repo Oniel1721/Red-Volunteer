@@ -11,6 +11,8 @@ const sequelize = new Sequelize(
 );
 
 module.exports = sequelize;
+
+
 // class DataBase {
 //     constructor(){
 //         this.url = path.join(__dirname,'./false_db.json')

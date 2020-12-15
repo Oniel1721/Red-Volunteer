@@ -18,6 +18,7 @@
 `npm i react-google-login`
 `npm i cors`
 `npm i express-formidable`
+`npm i sequelize`
 
 ## Available Script
 

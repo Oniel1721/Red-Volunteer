@@ -47,19 +47,24 @@ app.use(express.static(path.join(__dirname, '../dist')))
 // Starting Server
 app.listen(app.get('port'), (req, res)=> {
     console.log(`server on port ${app.get('port')}`);
-    sequelize.sync({force:true}).then(()=>{
-        TypeUser.bulkCreate(typeUser,{validate:true}).then(()=>{
+    sequelize.sync({force:true})
+    .then(()=>{
+        TypeUser.bulkCreate(typeUser,{validate:true})
+        .then(()=>{
             console.log('TypeUser created')
-        }).catch((err)=>{
+        })
+        .catch((err)=>{
             console.log("Failed to create TypeUser");
             console.log(err)
         })
         // .finally(()=>{
         //     sequelize.close();
         // });
-        BloodType.bulkCreate(bloodType,{validate:true}).then(()=>{
+        BloodType.bulkCreate(bloodType,{validate:true})
+        .then(()=>{
             console.log("Bloodtype inserted.");
-        }).catch((err)=>{
+        })
+        .catch((err)=>{
             console.log("Failed to insert BloodType");
             console.log(err)
         })
@@ -67,7 +72,8 @@ app.listen(app.get('port'), (req, res)=> {
         //     sequelize.close()
         // })
         console.log("--------------------");
-    }).catch(error=>{
+    })
+    .catch(error=>{
         console.log("error ocurrido",error);
     })
 })
