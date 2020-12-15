@@ -76,6 +76,8 @@ class Session{
         const $form = d.getElementById("signup"),
             data = new FormData($form),
             url = this.currentUrl+'/api/signup'
+            data.append("blood", document.getElementById("s-blood").value)
+            data.append("user", document.getElementById("s-user").value)
         
         
         fetch(url, {
@@ -156,7 +158,7 @@ class Session{
         }
         else{
             console.log(`Error: ${status.msg}`)
-        }    
+        } 
     }
 }
 

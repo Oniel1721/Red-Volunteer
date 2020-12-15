@@ -9,7 +9,7 @@ import LoginLocal from './pages/LoginLocal'
 import SignupLocal from './pages/SignupLocal'
 import TipoSangre from './pages/TipoSangre';
 import TipoUsuario from './pages/TipoUsuario'
-// import './styles/app.css';
+
 
 function App() {
   return (
