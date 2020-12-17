@@ -2,8 +2,8 @@ import React from 'react'
 
 const MsgReceived = ({msg}) => {
     return (
-        <div class="msg received">
-            <p class="message received">{msg}</p>
+        <div className="msg received">
+            <p className="message received">{msg}</p>
         </div>
     )
 }

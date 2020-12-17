@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import IconInicio from '../images/IconHome.png'
 import IconPeople from '../images/IconPeople.png'
 import iconChat from '../images/IconChatOn.png'
@@ -8,6 +8,11 @@ import '../styles/solicitante.css'
 import CardChat from '../components/CardChat'
 
 const ChatList = () => {
+    if(!localStorage.getItem("userID")){
+        return(
+            <Redirect to="/signup"></Redirect>
+        )
+    }
     return (
         <div className='chat-list'>
             <h2>Chats</h2>

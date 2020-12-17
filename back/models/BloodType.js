@@ -1,5 +1,5 @@
 const {Model,DataTypes} = require('sequelize');
-const { database } = require('../../config');
+const { database } = require('../db_connection');
 const sequelize = require('../database');
 
 class BloodType extends Model{}

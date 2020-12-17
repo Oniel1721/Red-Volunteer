@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import googleIcon from '../images/googleIcon.png'
 import facebookIcon from '../images/facebookIcon.png'
 import LoginG from '../components/GoogleLogin'
@@ -9,8 +9,12 @@ import session from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
 const LoginLocal = () =>{
-    session.checkSession("/solicitante", "")
-
+    if(localStorage.getItem("userID")){
+        return(
+            <Redirect to="/solicitante"></Redirect>
+        )
+    }
+    
     const handleLocalLogin =(e)=>{
         e.preventDefault()
         session.login()

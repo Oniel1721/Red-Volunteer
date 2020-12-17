@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import MsgReceived from '../components/MsgReceived'
 import MsgSent from '../components/MsgSent'
 import send from '../images/send.png'
@@ -7,6 +7,11 @@ import back from '../images/back.png'
 import '../styles/Chat.css'
 
 const Chat = () => {
+    if(!localStorage.getItem("userID")){
+        return(
+            <Redirect to="/signup"></Redirect>
+        )
+    }
 
     const handleSend = (e)=>{
         e.preventDefault()
@@ -39,7 +44,7 @@ const Chat = () => {
             
 
             <div className="col-2">
-                <div class="cont-chat">
+                <div className="cont-chat">
                     <MsgReceived msg='Think it is in there?' />
                     <MsgSent msg='All right. Let is get it!' />
                     <MsgReceived msg='Do you know what that thing can do to you?' />
@@ -53,10 +58,10 @@ const Chat = () => {
             </div>
 
             <form  id='form-chat'>
-                <hr class="line" ></hr>
-                <div class="cont-form">
-                    <input id="msg" class="input medium black" placeholder="Write here..." autocomplete="off" type="text" required/>
-                    <input onClick={handleSend} class="send" type="image" src={send} />
+                <hr className="line" ></hr>
+                <div className="cont-form">
+                    <input id="msg" className="input medium black" placeholder="Write here..." autoComplete="off" type="text" required/>
+                    <input onClick={handleSend} className="send" type="image" src={send} />
                 </div>
             </form>
         </div>

@@ -1,3 +1,5 @@
+import {Redirect} from 'react-router-dom'
+
 const d = document
 class Session{
     constructor(){
@@ -5,6 +7,7 @@ class Session{
         this.urlDev = 'http://localhost:7000'
         this.urlPro = ''
         this.currentUrl = this.urlDev
+
     }
 
     openSession(id){
@@ -13,10 +16,31 @@ class Session{
         this.isOpen = true
     }
     
-    closeSession(e,path="/"){
-        console.log(e)
+    closeSession(){
         localStorage.removeItem("userID")
-        window.location.assign(window.location.origin+path)
+    }
+
+    userDataInit(){
+        if(!localStorage.getItem("userData")){
+            localStorage.setItem("userData", "{}")
+        }
+    }
+
+    saveUserData(key = "", value = ""){
+        if(key && value){
+            this.userDataInit()
+            let userData = JSON.parse(localStorage.getItem("userData"))
+            if(key === 'name'){
+                value.trim()
+            }
+            userData[key] = value
+            localStorage.setItem("userData", JSON.stringify(userData))
+        }
+    }
+
+    getUserData(){
+        this.userDataInit()
+        return JSON.parse(localStorage.getItem("userData"))
     }
     
     redirect(path = ""){
@@ -25,61 +49,23 @@ class Session{
             wl.assign(`${wl.origin}${path}`)
         }
     }
-    
-    checkSession(success = "", fail = ""){
-        const id = localStorage.getItem("userID")
-        if(id){
-            const data = new FormData(),
-            url = this.currentUrl+'/api/user/id'
-            data.append("id", id)
-            fetch(url, {
-                method: "POST",
-                body: data
-            })
-            .then((response) =>{
-                if(response.ok) {
-                    return response.text()
-                } else {
-                    throw "Error in fetch";
-                }
-              })
-            .then((text) => {
-                let json = JSON.parse(text)
-                console.log("server answer",json);
-                if (json.OK){
-                    this.redirect(success)
-                }
-                else{
-                    this.redirect(fail)
-                } 
-              })
-            .catch((err) =>{
-                console.log("catch fetch: ",err);
-                this.redirect(fail)
-            }); 
-        }
-        else{
-            console.log("User have'nt started session.")
-            this.redirect(fail)
-        }
-    }
 
-    checkSignup(){
-        const status = {
+
+    checkSignup(userData){
+        const $form = document.getElementById("signup")
+        let status = {
             OK: true, 
-            msg: ""
+            msgs: ""
         }
         return status
     }
 
-    fetchSignup(){
-        const $form = d.getElementById("signup"),
-            data = new FormData($form),
+    fetchSignup(userData){
+        const data = new FormData(),
             url = this.currentUrl+'/api/signup'
-            data.append("blood", document.getElementById("s-blood").value)
-            data.append("user", document.getElementById("s-user").value)
-        
-        
+        for(let prop in userData){
+            data.append(prop, userData[prop])
+        }
         fetch(url, {
             method: "POST",
             body: data
@@ -95,8 +81,11 @@ class Session{
           let json = JSON.parse(text)
           console.log("server answer",json);
           if(json.OK){
-                this.openSession(json.user.id)
+                this.openSession(json.userId)
                 this.redirect("/solicitante")
+            }
+            else{
+                console.log(json.msg)
             }
         })
         .catch((err) =>{
@@ -105,12 +94,14 @@ class Session{
     }
 
     async signup(){
-        const status = await this.checkSignup()
+        let userData = this.getUserData()
+        const status = await this.checkSignup(userData)
         if(status.OK){
-            this.fetchSignup()
+            console.log('listo para el fetch')
+            this.fetchSignup(userData)
         }
         else{
-            console.log(`Error: ${status.msg}`)
+            console.log('Error: ', status.msgs)
         }
     }
 

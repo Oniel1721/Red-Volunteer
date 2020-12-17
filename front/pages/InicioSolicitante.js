@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import IconInicio from '../images/IconHomeOn.png'
 import IconPeople from '../images/IconPeople.png'
 import iconChat from '../images/IconChat.png'
@@ -8,13 +8,14 @@ import FormSolicitar from '../components/FormSolicitar'
 import ScreenPeticiones from '../components/ScreenPeticiones'
 import DonadoresMatch from '../components/DonadoresMatch'
 import '../styles/solicitante.css'
-import session from '../logic/sessions'
-
 
 const InicioSolicitante = () => {
-    session.checkSession("","/login")
+    if(!localStorage.getItem("userID")){
+        return(
+            <Redirect to="/signup"></Redirect>
+        )
+    }
     const handleChoose = (e)=>{
-
         let arrayChoose = document.querySelectorAll('.select')
 
         arrayChoose.forEach((a)=>{

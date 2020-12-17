@@ -55,18 +55,33 @@ router.delete('/user/:id',(req,res)=>{
 router.post('/signup', (req, res)=>{
     User.create({
         name:req.fields.name,
-        lastname:req.fields.last,
+        lastname:"paraRellenar",
         email:req.fields.email,
         password:req.fields.password,
-        typeUserId:req.fields.blood,
-        bloodtypeId:req.fields.user
-        
-    }).then(user=>{
-        res.json(user);
-    }).catch(err=>{
-        console.log(err)
+        typeUserId: 1,
+        bloodtypeId: 1
     })
-    // console.log(req)
+    .then(user=>{
+        let {userId, name, email, typeUserId, bloodtypeId} = user.dataValues,
+        answer = {
+            userId,
+            name,
+            email,
+            bloodType: bloodtypeId,
+            userType: typeUserId,
+            OK: true,
+            msg: "User registred"
+        }
+        res.json(answer);
+    })
+    .catch(err=>{
+        console.log(err)
+        let answer = {
+            OK: false,
+            msg: "There was an error."
+        }
+        res.json(answer);
+    })
 })
 
 router.get('/users', (req,res)=>{

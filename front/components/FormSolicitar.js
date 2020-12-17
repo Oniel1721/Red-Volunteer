@@ -6,13 +6,13 @@ const FormSolicitar = () => {
             <div className='content-form-solicitar container'>
                 <form id='formSolicitar'>
                     <div className='line-input'>
-                        <label for="name">Nombre:</label>
-                        <input type="text" id="name" autocomplete="off" required/>
+                        <label htmlFor="name">Nombre:</label>
+                        <input type="text" id="name" autoComplete="off" required/>
                     </div>
                     <div className='line-input'>
-                        <label for="fname">Tipo de sangre:</label>
+                        <label htmlFor="fname">Tipo de sangre:</label>
                         <select id="bloodType" form="formSolicitar" required>
-                            <option value="0" selected disabled hidden></option>
+                            <option value="0" defaultValue disabled hidden></option>
                             <option value="1">A+</option>
                             <option value="2">B+</option>
                             <option value="3">AB+</option>
@@ -24,11 +24,11 @@ const FormSolicitar = () => {
                         </select>
                     </div>
                     <div className='line-input'>
-                        <label for="fname">Fecha limite:</label>
+                        <label htmlFor="fname">Fecha limite:</label>
                         <input type="date" id="dateLimit" required/>
                     </div>
                     <div className='line-input'>
-                        <label for="name">Descripcion:</label>
+                        <label htmlFor="name">Descripcion:</label>
                         <input className='longer' type="text" id="name" />
                     </div>
                     <button type="submit" form="formSolicitar" value="Submit">Solicitar</button>

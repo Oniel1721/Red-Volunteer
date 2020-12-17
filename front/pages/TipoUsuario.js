@@ -1,14 +1,26 @@
 import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import '../styles/TipoUsuario.css';
 import session from '../logic/sessions'
 
+const handleSubmit = (e)=>{
+    e.preventDefault()
+    let userType = document.querySelector('input[name="tipoUsuario"]:checked').id
+    session.saveUserData('userType', userType)
+    window.location.assign('/tipoSangre')
+}
+
+
 const TipoUsuario = () => {
-    session.checkSession("","/")
+    if(localStorage.getItem("userID")){
+        return(
+            <Redirect to="/solicitante"></Redirect>
+        )
+    }
 
     return (
         <div className='tipo'>
-
+            <Link to="/">Back</Link>
             <div className='progress-bar'>
                 <hr></hr>
             </div>
@@ -17,15 +29,15 @@ const TipoUsuario = () => {
 
                 <h2>Selecciona su tipo de usuario:</h2>
 
-                <form id='tipoUsuario'>
+                <form id='tipoUsuario' onSubmit={handleSubmit} >
 
                     <div className='select-btn'>
-                        <label for="solicitante">Solicitante</label>
+                        <label htmlFor="solicitante">Solicitante</label>
                         <input type="radio" id="solicitante" name="tipoUsuario" required/>
                     </div>
                    
                     <div className='select-btn'>
-                        <label for="donante">Donante</label>
+                        <label htmlFor="donante">Donante</label>
                         <input type="radio" id="donante" name="tipoUsuario" required/>
                     </div>
 

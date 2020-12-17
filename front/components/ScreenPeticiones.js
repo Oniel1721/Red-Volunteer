@@ -10,7 +10,7 @@ const ScreenPeticiones = () => {
 
                     <form id='ordenarPeticiones'>
                         <select id="bloodType" form="ordenarPeticiones">                         
-                            <option value="0" selected disabled hidden>Ordenar por</option>
+                            <option value="0" defaultValue disabled hidden>Ordenar por</option>
                             <option value="1">Fecha</option>
                             <option value="2">Recientes</option>
                             <option value="3">Antiguas</option>

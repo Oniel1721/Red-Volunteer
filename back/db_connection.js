@@ -1,5 +1,6 @@
 module.exports = {
     /*
+    Local Josue Version
     database:{
         username:"root",
         password:"Angular2302",
@@ -7,6 +8,7 @@ module.exports = {
         host:"localhost"
     }
     */
+   // Online Version
     database:{
         username:"teNtvwIcVn",
         password:"4tOkdF7dA6",

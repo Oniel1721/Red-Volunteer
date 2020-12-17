@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import IconInicio from '../images/IconHome.png'
 import IconPeople from '../images/IconPeople.png'
 import iconChat from '../images/IconChat.png'
@@ -12,6 +12,11 @@ import CloseSession from '../components/CloseSession'
 import '../styles/solicitante.css'
 
 const Ajustes = () => {
+    if(!localStorage.getItem("userID")){
+        return(
+            <Redirect to="/signup"></Redirect>
+        )
+    }
     return (
         <div className='ajustes'>
             <div className='content-ajustes'>
@@ -46,16 +51,16 @@ const Ajustes = () => {
                     <hr></hr>
                     <div className='ajustes-opcion'>
                         <p>Donador disponible</p>
-                        <label class="switch">
+                        <label className="switch">
                             <input type="checkbox"/>
-                            <span class="slider round" />
+                            <span className="slider round" />
                         </label>
                     </div>
                     <div className='ajustes-opcion'>
                         <p>Mensajes nuevos</p>
-                        <label class="switch">
+                        <label className="switch">
                             <input type="checkbox"/>
-                            <span class="slider round" />
+                            <span className="slider round" />
                         </label>
                     </div>
                 </div>
