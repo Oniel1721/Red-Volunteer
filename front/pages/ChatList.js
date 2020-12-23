@@ -8,11 +8,13 @@ import '../styles/solicitante.css'
 import CardChat from '../components/CardChat'
 
 const ChatList = () => {
+
     if(!localStorage.getItem("userID")){
         return(
             <Redirect to="/signup"></Redirect>
         )
     }
+    
     return (
         <div className='chat-list'>
             <h2>Chats</h2>

@@ -7,6 +7,7 @@ import back from '../images/back.png'
 import '../styles/Chat.css'
 
 const Chat = () => {
+
     if(!localStorage.getItem("userID")){
         return(
             <Redirect to="/signup"></Redirect>

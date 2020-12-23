@@ -1,39 +1,56 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Link ,Redirect} from 'react-router-dom'
-import session from '../logic/sessions'
+import React,{useState} from 'react'
+import {Link, Redirect} from 'react-router-dom'
 import '../styles/TipoUsuario.css';
+import session from '../logic/sessions'
 
 const handleSubmit = (e)=>{
     e.preventDefault()
-    let bloodType = `${document.querySelector('input[name="tipoSangre"]:checked').id}${document.querySelector('input[name="tipoCompatibilidad"]:checked').id}`
-    session.saveUserData('bloodType', bloodType)
-    window.location.assign('/signup')
+    let userType = document.querySelector('input[name="tipoUsuario"]:checked').id
+    session.saveUserData('userType', userType)
+    document.getElementById('wrap-blood').classList.remove('hide')
+    document.getElementById('wrap-type').classList.add('hide')
+    document.querySelector('.progress-bar').classList.add('v2')
 }
 
-const TipoSangre = () => {
+
+const Usuario_Sangre = () => {
     if(localStorage.getItem("userID")){
         return(
             <Redirect to="/solicitante"></Redirect>
         )
     }
 
-    if(!session.getUserData().userType){
-        return(
-            <Redirect to="/tipoUsuario"></Redirect>
-        )
-    }
-
-
-        return (
-            <div className='tipo'>
-            <div className='progress-bar2'>
+    return (
+        <div className='tipo'>
+            
+            <div className='progress-bar'>
                 <hr></hr>
             </div>
 
-            <Link to="/tipoUsuario">Back</Link>
+            <div id='wrap-type' className='content-tipo'>
 
-            <div className='content-tipo'>
+                <h2>Selecciona su tipo de usuario:</h2>
+
+                <form id='tipoUsuario' onSubmit={handleSubmit} >
+
+                    <div className='select-btn'>
+                        <label htmlFor="solicitante">Solicitante</label>
+                        <input type="radio" id="solicitante" name="tipoUsuario" required/>
+                    </div>
+                   
+                    <div className='select-btn'>
+                        <label htmlFor="donante">Donante</label>
+                        <input type="radio" id="donante" name="tipoUsuario" required/>
+                    </div>
+
+                    <input className='btn-next' type="submit" value="Continuar"></input>
+                   
+                </form>
+
+
+            </div>
+
+            <div id='wrap-blood' className='content-tipo 2 hide'>
 
                 <h2>Selecciona su tipo de sangre:</h2>
 
@@ -87,4 +104,4 @@ const TipoSangre = () => {
     )
 }
 
-export default TipoSangre
+export default Usuario_Sangre

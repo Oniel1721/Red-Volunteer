@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import LoginFB from '../components/FacebookLogin'
 import session from '../logic/sessions'
 import '../styles/Home.css'
+import ServicesMobile from '../components/ServicesMobile'
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Hero />
             <HeroDesktop />
             <Services />
+            <ServicesMobile />
             <Divider />
             <Team />
             <Footer />

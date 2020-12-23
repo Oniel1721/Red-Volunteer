@@ -7,8 +7,7 @@ import Home from './pages/Home'
 import InicioSolicitante from './pages/InicioSolicitante';
 import LoginLocal from './pages/LoginLocal'
 import SignupLocal from './pages/SignupLocal'
-import TipoSangre from './pages/TipoSangre';
-import TipoUsuario from './pages/TipoUsuario'
+import Usuario_Sangre from './pages/Usuario_Sangre'
 
 
 function App() {
@@ -19,11 +18,11 @@ function App() {
         <Route exact path='/solicitante' component={InicioSolicitante}/>
         <Route exact path='/solicitante/chatList' component={ChatList}/>
         <Route exact path='/solicitante/chatUser' component={Chat}/>
+        <Route exact path='/chatUser' component={Chat}/>
         <Route exact path='/solicitante/settings' component={Ajustes}/>
         <Route exact path='/login' component={LoginLocal}/>
         <Route exact path='/signup' component={SignupLocal}/>
-        <Route exact path='/tipoUsuario' component={TipoUsuario}/>
-        <Route exact path='/tipoSangre' component={TipoSangre}/>
+        <Route exact path='/Usuario_Sangre' component={Usuario_Sangre}/>
       </Switch>
     </BrowserRouter>
   );

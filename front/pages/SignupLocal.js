@@ -32,7 +32,7 @@ const SignupLocal = () =>{
     }
     else if(!session.getUserData().bloodType){
         return(
-            <Redirect to="/tipoSangre"></Redirect>
+            <Redirect to="/Usuario_Sangre"></Redirect>
         )
     }
 
@@ -61,7 +61,7 @@ const SignupLocal = () =>{
                 <p>Registro local</p>
                 <hr/>
             </div>
-            <Link to="/tipoSangre">Back</Link>
+            <Link to="/Usuario_Sangre">Back</Link>
 
             <form id="signup" onSubmit={handleLocalSignup}>
                 

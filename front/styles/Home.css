@@ -102,6 +102,7 @@ a{
 /* Services */
 .services{
     padding: 2rem;
+    display: none;
 }
 .services-card{
     text-align: left;
@@ -126,6 +127,58 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Services Mobile */
+.services-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.services-mobile img{
+    margin: 7rem 0;
+    animation: subir 1s ease;
+}
+@keyframes subir{
+    from{
+        transform: translateX(150px);
+    }to{
+        transform: translateX(0);
+    }
+}
+.info-servicio{
+    background-color: #C75146;
+    color: white;
+    border-radius: 100px 100px 0px 0px;
+    padding: 7rem 5rem;
+}
+.info-servicio h2{
+    margin-bottom: 2rem;
+}
+#botones-servicios input[type='radio']{
+    display: none;
+}
+#botones-servicios label{
+    background-color: #FFD200;
+    color:  #FFD200;
+    font-size: 0px;
+    width: 20px;
+    height: 9px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: 0.5s ease;
+}
+#botones-servicios input[type='radio']:checked + label{
+    width: 75px;
+}
+#botones-servicios{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+}
+.wrap-option{
+    margin: 0 0.5rem;
 }
 
 /* Divider */
@@ -220,6 +273,12 @@ a{
 
 /* Responsive Tablet */
 @media only screen and (min-width: 768px) {
+    .services{
+        display: block;
+    }
+    .services-mobile{
+        display: none;
+    }
     .hero{
         height: auto;
     }

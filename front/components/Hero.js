@@ -11,7 +11,7 @@ const Hero = () => {
                     <SvgHero/>
                 </div>
                 <div className='content-btn'>
-                    <Link to="/tipoUsuario">
+                    <Link to="/login">
                     <div className='btn bg-white brown'>
                         <p>Comenzar</p>
                     </div>
