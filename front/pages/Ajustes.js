@@ -12,11 +12,11 @@ import CloseSession from '../components/CloseSession'
 import '../styles/solicitante.css'
 
 const Ajustes = () => {
-    if(!localStorage.getItem("userID")){
-        return(
-            <Redirect to="/signup"></Redirect>
-        )
-    }
+    // if(!localStorage.getItem("userID")){
+    //     return(
+    //         <Redirect to="/signup"></Redirect>
+    //     )
+    // }
     return (
         <div className='ajustes'>
             <div className='content-ajustes'>

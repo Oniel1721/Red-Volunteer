@@ -10,11 +10,11 @@ import DonadoresMatch from '../components/DonadoresMatch'
 import '../styles/solicitante.css'
 
 const InicioSolicitante = () => {
-    if(!localStorage.getItem("userID")){
-        return(
-            <Redirect to="/signup"></Redirect>
-        )
-    }
+    // if(!localStorage.getItem("userData")){
+    //     return(
+    //         <Redirect to="/signup"></Redirect>
+    //     )
+    // }
     const handleChoose = (e)=>{
         let arrayChoose = document.querySelectorAll('.select')
 

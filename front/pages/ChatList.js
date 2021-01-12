@@ -9,11 +9,11 @@ import CardChat from '../components/CardChat'
 
 const ChatList = () => {
 
-    if(!localStorage.getItem("userID")){
-        return(
-            <Redirect to="/signup"></Redirect>
-        )
-    }
+    // if(!localStorage.getItem("userID")){
+    //     return(
+    //         <Redirect to="/signup"></Redirect>
+    //     )
+    // }
     
     return (
         <div className='chat-list'>

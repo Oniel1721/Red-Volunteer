@@ -8,11 +8,11 @@ import '../styles/Chat.css'
 
 const Chat = () => {
 
-    if(!localStorage.getItem("userID")){
-        return(
-            <Redirect to="/signup"></Redirect>
-        )
-    }
+    // if(!localStorage.getItem("userID")){
+    //     return(
+    //         <Redirect to="/signup"></Redirect>
+    //     )
+    // }
 
     const handleSend = (e)=>{
         e.preventDefault()

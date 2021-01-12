@@ -19,22 +19,22 @@ const handleLocalSignup =(e)=>{
 }
 
 const SignupLocal = () =>{
-    if(localStorage.getItem("userID")){
-        return(
-            <Redirect to="/solicitante"></Redirect>
-        )
-    }
+    // if(localStorage.getItem("userData")){
+    //     return(
+    //         <Redirect to="/solicitante"></Redirect>
+    //     )
+    // }
 
-    if(!session.getUserData().userType){
-        return(
-            <Redirect to="/tipoUsuario"></Redirect>
-        )
-    }
-    else if(!session.getUserData().bloodType){
-        return(
-            <Redirect to="/Usuario_Sangre"></Redirect>
-        )
-    }
+    // if(!session.getUserData().userType){
+    //     return(
+    //         <Redirect to="/tipoUsuario"></Redirect>
+    //     )
+    // }
+    // else if(!session.getUserData().bloodType){
+    //     return(
+    //         <Redirect to="/Usuario_Sangre"></Redirect>
+    //     )
+    // }
 
     return(
         <div className='signupLocal'>

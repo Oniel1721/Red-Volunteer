@@ -9,11 +9,11 @@ import session from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
 const LoginLocal = () =>{
-    if(localStorage.getItem("userID")){
-        return(
-            <Redirect to="/solicitante"></Redirect>
-        )
-    }
+    // if(localStorage.getItem("userData")){
+    //     return(
+    //         <Redirect to="/solicitante"></Redirect>
+    //     )
+    // }
     
     const handleLocalLogin =(e)=>{
         e.preventDefault()
