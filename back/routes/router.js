@@ -55,11 +55,11 @@ router.delete('/user/:id',(req,res)=>{
 router.post('/signup', (req, res)=>{
     User.create({
         name:req.fields.name,
-        lastname:"paraRellenar",
         email:req.fields.email,
         password:req.fields.password,
-        typeUserId: 1,
-        bloodtypeId: 1
+        typeUserId:req.fields.blood,
+        bloodtypeId:req.fields.user,
+        graphDomain:"Local"
     })
     .then(user=>{
         let {userId, name, email, typeUserId, bloodtypeId} = user.dataValues,
@@ -83,6 +83,7 @@ router.post('/signup', (req, res)=>{
         res.json(answer);
     })
 })
+
 
 router.get('/users', (req,res)=>{
     User.findAll({include:['bloodtype','typeUser']}).then(users=>{
