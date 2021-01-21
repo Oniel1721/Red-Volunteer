@@ -9,13 +9,12 @@ User.init({
         primaryKey:true,
         autoIncrement:true
     },
-    name:DataTypes.STRING,
-    lastname:DataTypes.STRING,
-    birthDate:DataTypes.DATE,
-    password:DataTypes.STRING,
-    email:DataTypes.STRING,
-    typeUserId:DataTypes.INTEGER,
-    bloodtypeId:DataTypes.INTEGER
+    name:req.fields.name,
+    email:req.fields.email,
+    password:req.fields.password,
+    typeUserId:req.fields.blood,
+    bloodtypeId:req.fields.user,
+    graphDomain:"Local"
     // birthdate:DataTypes.DATE
 },{
     sequelize,
