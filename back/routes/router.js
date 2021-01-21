@@ -84,6 +84,23 @@ router.post('/signup', (req, res)=>{
     })
 })
 
+router.post('/signupSocial', (req, res)=>{
+    User.create({
+        name:req.fields.name,
+        email:req.fields.email,
+        graphDomain:req.fields.graphDomain,
+        userIdDomain:req.fields.userID,
+        typeUserId:req.fields.blood,
+        bloodtypeId:req.fields.user
+        
+    }).then(user=>{
+        res.json(user);
+    }).catch(err=>{
+        console.log(err)
+    })
+    // console.log(req)
+})
+
 
 router.get('/users', (req,res)=>{
     User.findAll({include:['bloodtype','typeUser']}).then(users=>{
