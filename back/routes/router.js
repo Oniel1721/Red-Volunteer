@@ -84,7 +84,8 @@ router.post('/signup', (req, res)=>{
     })
 })
 
-router.post('/signupSocial', (req, res)=>{
+router.post('/social', (req, res)=>{
+    console.log(req.fields)
     User.create({
         name:req.fields.name,
         email:req.fields.email,
@@ -109,7 +110,7 @@ router.get('/users', (req,res)=>{
 })
 
 // LOGIN
-router.post('/login', (req, res)=>{
+router.get('/login', (req, res)=>{
     console.log(req.fields);
     User.findOne({where:{email:req.fields.email}}).then(user=>{
         console.log(user)

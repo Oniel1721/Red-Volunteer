@@ -5,14 +5,17 @@ import session from "../logic/sessions";
 const LoginFB = () => {
 
   const responseFacebook = (res) => {
-    if (res) {
-      return JSON.stringify(res);
-    }
+    console.log(res)
+    return res
   };
-  
+
   const sendUserInfo = () => {
-    var url = "http://localhost:7000";
-    var data = responseFacebook;
+    var url = 'http://localhost:7000/api/social';
+    var data = new FormData()
+
+    for(let prop in responseFacebook){
+      data.set(prop, responseFacebook[prop])
+    }
 
     fetch(url, {
       method: "POST",
@@ -21,55 +24,52 @@ const LoginFB = () => {
         "Content-Type": "application/json",
       },
       mode: "cors",
-    }).then((response) => {
+    })
+    .then((response) => {
       if (response.ok) {
-        return console.log("ok");
+        console.log("ok");
       } else {
-        throw "Error in fetch";
+        console.log("Error in fetch");
       }
-    });
+    })
+    .catch((error) => {
+      console.log(error);
+    });;
   };
 
-  const fetchApi = () => {
-    var url = "http://localhost:7000/api";
+  // const verify = () => {
 
-    fetch(url)
-      .then((data) => data.json())
-      .then((users) => {
-        const verify = () => {
+  //   var url = 'http://localhost:7000/api/:'+responseFacebook.userID;
 
-          for (var user in users) {
-            for (var index in users[user]) {
-              if (
-                users[user][index].name == responseFacebook.name &&
-                users[user][index].userId == responseFacebook.userId
-              ) {
-                session.openSession(users[user][index].userId);
-                session.redirect("/solicitante");
-                session.checkSession('/solicitante', window.location.href)
-              } else {
-                sendUserInfo()
-                verify()
-              }
-            }
-          }
-        };
+  //   fetch(url)
+  //     .then((data) => data.json())
+  //     .then((users, err) => {
+  //       if(users.){
 
-        verify();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  
+  //       }
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
+  const register = ()=>{
+      
+    verify();
+
+    if (verify != true ){
+      sendUserInfo()
+      verify()
+    }
+  }
+
   return (
     <div className="facebookLogin">
       <FacebookLogin
         appId="405429787148913"
         autoLoad={false}
         fields="name,email,picture"
-        callback={responseFacebook}
-        textButton="Sign in with Facebook"
+        callback={responseFacebook, sendUserInfo}
+        textButton="Continue with Facebook"
         icon="fa-facebook"
         cssClass="extra-btn blue"
       />
