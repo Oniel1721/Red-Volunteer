@@ -14,15 +14,12 @@ const LoginFB = () => {
     var data = new FormData()
 
     for(let prop in responseFacebook){
-      data.set(prop, responseFacebook[prop])
+      data.append(prop, responseFacebook[prop])
     }
 
     fetch(url, {
       method: "POST",
       body: data,
-      headers: {
-        "Content-Type": "application/json",
-      },
       mode: "cors",
     })
     .then((response) => {
