@@ -1,33 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import googleIcon from '../images/googleIcon.png'
 import facebookIcon from '../images/facebookIcon.png'
 import LoginG from '../components/GoogleLogin'
 import LoginFB from '../components/FacebookLogin'
 import LoginSvg from '../components/LoginSvg'
-import session from '../logic/sessions'
+import session, {setData} from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
-const handleLocalSignup =(e)=>{
-    e.preventDefault()
-    const $form = document.getElementById("signup")
-    session.saveUserData("name", $form.username.value)
-    session.saveUserData("email", $form.email.value)
-    session.saveUserData("password", $form.password.value)
-    session.saveUserData("method", 'local')
-    session.signup()
-}
-
 const SignupLocal = () =>{
+    const [redir, setRedir] = useState('')
     // if(localStorage.getItem("userData")){
-    //     return(
-    //         <Redirect to="/solicitante"></Redirect>
-    //     )
-    // }
-
-    // if(!session.getUserData().userType){
-    //     return(
-    //         <Redirect to="/tipoUsuario"></Redirect>
+        //     return(
+            //         <Redirect to="/solicitante"></Redirect>
+            //     )
+            // }
+            
+            // if(!session.getUserData().userType){
+                //     return(
+                    //         <Redirect to="/tipoUsuario"></Redirect>
     //     )
     // }
     // else if(!session.getUserData().bloodType){
@@ -35,10 +26,52 @@ const SignupLocal = () =>{
     //         <Redirect to="/Usuario_Sangre"></Redirect>
     //     )
     // }
+    
+    const handleSignup =(e)=>{
+        e.preventDefault()
+        const url = 'http://localhost:7000/api/signup'
+        const $form = document.getElementById("signup")
+        const data = new FormData($form)
+        data.set('blood', 1)
+        data.set('user', 1)
+        fetch(url, {
+            method: "POST",
+            body: data
+        })   
+        .then((response) =>{
+            if(response.ok) {
+                return response.json()
+            } else {
+                throw "Error in fetch";
+            }
+        })
+        .then((json)=> {
+            console.log("server answer",json);
+            if(json.OK){
+                setData('session', {
+                    isLoged: true,
+                    userId: json.userId
+                })
+                setRedir('/solicitante')
+            }
+        })
+        .catch((err) =>{
+            console.log(err);
+        });
+    }
 
+    const renderRedir = ()=>{
+        if(!redir) return ''
+        return(
+            <Redirect to={redir}/>
+        )   
+    }
+    
     return(
         <div className='signupLocal'>
-
+            {
+                renderRedir()
+            }
             <div className='svgLogin'>
                 <LoginSvg />
             </div>
@@ -63,7 +96,7 @@ const SignupLocal = () =>{
             </div>
             <Link to="/Usuario_Sangre">Back</Link>
 
-            <form id="signup" onSubmit={handleLocalSignup}>
+            <form id="signup" onSubmit={handleSignup}>
                 
                 <div className='columna'>
                     <label>Nombre</label>

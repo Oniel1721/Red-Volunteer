@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
+import {setData} from '../logic/sessions'
 import IconInicio from '../images/IconHome.png'
 import IconPeople from '../images/IconPeople.png'
 import iconChat from '../images/IconChat.png'
@@ -12,13 +13,28 @@ import CloseSession from '../components/CloseSession'
 import '../styles/solicitante.css'
 
 const Ajustes = () => {
+    const [redir, setRedir] = useState('')
+
     // if(!localStorage.getItem("userID")){
     //     return(
     //         <Redirect to="/signup"></Redirect>
     //     )
     // }
+    const handleCloseSession = (e)=>{
+        setData('session', {isLoged:false})
+        setRedir('/login')
+    }
+
+    const renderRedir = ()=>{
+        if(!redir) return ''
+        return(
+            <Redirect to={redir}/>
+        )
+        
+    }
     return (
         <div className='ajustes'>
+            {renderRedir()}
             <div className='content-ajustes'>
 
                 <h2>Ajustes</h2>
@@ -81,7 +97,7 @@ const Ajustes = () => {
                     </div>
                 </div>
 
-                <CloseSession></CloseSession>
+                <CloseSession handleClick={handleCloseSession}/>
 
                 <div className='menu'>
                     <div className='content-menu container'>

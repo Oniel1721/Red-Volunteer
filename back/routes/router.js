@@ -59,7 +59,7 @@ router.post('/signup', (req, res)=>{
         password:req.fields.password,
         typeUserId:req.fields.blood,
         bloodtypeId:req.fields.user,
-        graphDomain:"Local"
+        graphDomain:"local"
     })
     .then(user=>{
         let {userId, name, email, typeUserId, bloodtypeId} = user.dataValues,
@@ -110,10 +110,13 @@ router.get('/users', (req,res)=>{
 })
 
 // LOGIN
-router.get('/login', (req, res)=>{
-    console.log(req.fields);
+router.post('/login', (req, res)=>{
     User.findOne({where:{email:req.fields.email}}).then(user=>{
         console.log(user)
+        res.json({
+            ...user,
+            OK: true
+        })
     })
 })
 

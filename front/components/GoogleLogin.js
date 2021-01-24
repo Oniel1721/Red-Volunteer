@@ -3,7 +3,6 @@ import GoogleLogin from 'react-google-login'
 import session from "../logic/sessions";
 
 const LoginG = ()=>{
-
     const responseGoogle = (res) => {
         if (res) {
           return JSON.stringify(res);
@@ -17,9 +16,6 @@ const LoginG = ()=>{
         fetch(url, {
           method: "POST",
           body: data,
-          headers: {
-            "Content-Type": "application/json",
-          },
           mode: "cors",
         })
         .then((response) => {
