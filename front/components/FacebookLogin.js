@@ -20,9 +20,6 @@ const LoginFB = () => {
     fetch(url, {
       method: "POST",
       body: data,
-      headers: {
-        "Content-Type": "application/json",
-      },
       mode: "cors",
     })
     .then((response) => {

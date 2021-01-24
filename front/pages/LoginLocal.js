@@ -1,28 +1,56 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import googleIcon from '../images/googleIcon.png'
 import facebookIcon from '../images/facebookIcon.png'
 import LoginG from '../components/GoogleLogin'
 import LoginFB from '../components/FacebookLogin'
 import LoginSvg from '../components/LoginSvg'
-import session from '../logic/sessions'
+import session, {setData} from '../logic/sessions'
 import '../styles/SignupLocal.css'
 
 const LoginLocal = () =>{
-    // if(localStorage.getItem("userData")){
-    //     return(
-    //         <Redirect to="/solicitante"></Redirect>
-    //     )
-    // }
-    
-    const handleLocalLogin =(e)=>{
+    const [redir, setRedir] = useState('')
+    const handleLogin =(e)=>{
         e.preventDefault()
-        session.login()
+        const url = 'http://localhost:7000/api/login'
+        const $form = document.getElementById("login")
+        const data = new FormData($form)
+        fetch(url, {
+            method: "POST",
+            body: data
+        })   
+        .then((response) =>{
+            if(response.ok) {
+                return response.json()
+            } else {
+                throw "Error in fetch";
+            }
+        })
+        .then((json)=> {
+            console.log("server answer",json);
+            if(json.OK){
+                setData('session', {
+                    isLoged: true,
+                    userId: json.userId
+                })
+                setRedir('/solicitante')
+            }
+        })
+        .catch((err) =>{
+            console.log(err);
+        });
+    }
+
+    const renderRedir = ()=>{
+        if(!redir) return ''
+        return(
+            <Redirect to={redir}/>
+        )   
     }
 
     return(
         <div className='signupLocal'>
-
+            {renderRedir()}
             <div className='svgLogin'>
                 <LoginSvg />
             </div>
@@ -33,10 +61,10 @@ const LoginLocal = () =>{
 
             <div className='fila'>
                 <div>
-                    <p><LoginG></LoginG></p>
+                    <LoginG></LoginG>
                 </div>
                 <div>
-                    <p><LoginFB></LoginFB></p>
+                    <LoginFB></LoginFB>
                 </div>
             </div>
 
@@ -46,8 +74,7 @@ const LoginLocal = () =>{
                 <hr/>
             </div>
 
-            <form id="login" onSubmit={handleLocalLogin}>
-
+            <form id="login" onSubmit={handleLogin}>
                 <div className='columna'>
                     <label>Email</label>
                     <input type="email" name="email" id="l-email" required />
