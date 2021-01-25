@@ -14,11 +14,11 @@ const handleSubmit = (e)=>{
 
 
 const Usuario_Sangre = () => {
-    if(localStorage.getItem("userID")){
-        return(
-            <Redirect to="/solicitante"></Redirect>
-        )
-    }
+    // if(localStorage.getItem("userID")){
+    //     return(
+    //         <Redirect to="/solicitante"></Redirect>
+    //     )
+    // }
 
     return (
         <div className='tipo'>
