@@ -1,45 +1,13 @@
 import React, {useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import googleIcon from '../images/googleIcon.png'
-import facebookIcon from '../images/facebookIcon.png'
 import LoginG from '../components/GoogleLogin'
 import LoginFB from '../components/FacebookLogin'
 import LoginSvg from '../components/LoginSvg'
-import session, {setData} from '../logic/sessions'
+
 import '../styles/SignupLocal.css'
 
 const LoginLocal = () =>{
     const [redir, setRedir] = useState('')
-    const handleLogin =(e)=>{
-        e.preventDefault()
-        const url = 'http://localhost:7000/api/login'
-        const $form = document.getElementById("login")
-        const data = new FormData($form)
-        fetch(url, {
-            method: "POST",
-            body: data
-        })   
-        .then((response) =>{
-            if(response.ok) {
-                return response.json()
-            } else {
-                throw "Error in fetch";
-            }
-        })
-        .then((json)=> {
-            console.log("server answer",json);
-            if(json.OK){
-                setData('session', {
-                    isLoged: true,
-                    userId: json.userId
-                })
-                setRedir('/solicitante')
-            }
-        })
-        .catch((err) =>{
-            console.log(err);
-        });
-    }
 
     const renderRedir = ()=>{
         if(!redir) return ''
@@ -48,7 +16,80 @@ const LoginLocal = () =>{
         )   
     }
 
+    const responseFacebook = (res) => {
+
+        const sendUserInfo = () => {
+    
+          var url = 'http://localhost:7000/api/social';
+          var data = new FormData()
+          var facebookValues = Object.values(res)
+          var facebooKeys = Object.keys(res)
+          var prop;
+          
+          for( prop in facebooKeys){
+            if(facebooKeys[prop] == 'name' || facebooKeys[prop] == 'email' || facebooKeys[prop] == 'userID'|| facebooKeys[prop] == 'graphDomain'){
+              data.append(facebooKeys[prop],facebookValues[prop])
+            }
+          }
+          
+          data.append('typeUserId', 1)
+          data.append('bloodtypeId', 1)
+          
+      
+          fetch(url, {
+            method: "POST",
+            body: data,
+            mode: "cors",
+          })
+          .then((response) => {
+            if (response.ok) {
+      
+              // session.openSession(res.userID);
+              // session.redirect("/Usuario_Sangre");
+              return true
+             
+            } else {
+              console.log("Error in fetch");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });;
+        };
+    
+        const verify = () => {
+    
+          var url = 'http://localhost:7000/api/:'+res.userID;
+    
+          fetch(url)
+            .then((data) => data.json())
+            .then((user) => {
+              if(response.ok){
+                if(user != []){
+                  if(user.userIdDomain == res.userID){
+                    // session.openSession(res.userID);
+                    // session.redirect("/Usuario_Sangre")
+                    return true
+                  }else{
+                    sendUserInfo()
+                  }
+                }else{
+                  sendUserInfo()
+                }
+              }else{
+                sendUserInfo()
+              }
+              console.log(users)
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        };
+        verify()
+      }
+
     return(
+
         <div className='signupLocal'>
             {renderRedir()}
             <div className='svgLogin'>
@@ -61,35 +102,12 @@ const LoginLocal = () =>{
 
             <div className='fila'>
                 <div>
-                    <LoginG></LoginG>
+                    {/* <LoginG></LoginG> */}
                 </div>
                 <div>
-                    <LoginFB></LoginFB>
+                    <LoginFB responseFacebook={responseFacebook}></LoginFB>
                 </div>
             </div>
-
-            <div className='divider'>
-                <hr/>
-                <p>Inicio local</p>
-                <hr/>
-            </div>
-
-            <form id="login" onSubmit={handleLogin}>
-                <div className='columna'>
-                    <label>Email</label>
-                    <input type="email" name="email" id="l-email" required />
-                </div>
-
-                <div className='columna'>
-                    <label>Contraseña</label>
-                    <input type="password" name="password" id="l-password" required />
-                </div>
-
-                <button type="submit">Iniciar</button>
-            </form>
-
-            <p className='last-info'>¿Aún no tienes cuenta?</p>
-            <Link to="/signup">Crear cuenta</Link>
             </div>
         </div>
     )

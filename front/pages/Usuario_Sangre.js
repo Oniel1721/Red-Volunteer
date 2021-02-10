@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import '../styles/TipoUsuario.css';
-import session from '../logic/sessions'
+// import session from '../logic/sessions'
 
 const handleSubmit = (e)=>{
     e.preventDefault()
     let userType = document.querySelector('input[name="tipoUsuario"]:checked').id
-    session.saveUserData('userType', userType)
+    // session.saveUserData('userType', userType)
     document.getElementById('wrap-blood').classList.remove('hide')
     document.getElementById('wrap-type').classList.add('hide')
     document.querySelector('.progress-bar').classList.add('v2')
