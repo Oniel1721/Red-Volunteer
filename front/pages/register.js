@@ -3,10 +3,13 @@ import {Link, Redirect} from 'react-router-dom'
 import LoginG from '../components/GoogleLogin'
 import LoginFB from '../components/FacebookLogin'
 import LoginSvg from '../components/LoginSvg'
+import setData from '../logic/sessions'
 
 import '../styles/SignupLocal.css'
 
-const LoginLocal = () =>{
+
+const Register = () =>{
+  
     const [redir, setRedir] = useState('')
 
     const renderRedir = ()=>{
@@ -17,37 +20,40 @@ const LoginLocal = () =>{
     }
 
     const responseFacebook = (res) => {
-
+    
         const sendUserInfo = () => {
     
           var url = 'http://localhost:7000/api/social';
-          var data = new FormData()
-          var facebookValues = Object.values(res)
-          var facebooKeys = Object.keys(res)
           var prop;
+        
+            function setData(){
+
+                var data = new FormData()
+
+                if(res){
+                    let facebookValues = Object.values(res)
+                    let facebooKeys = Object.keys(res)
+                    
+                    for( prop in facebooKeys){
+                        if(facebooKeys[prop] == 'name' || facebooKeys[prop] == 'email' || facebooKeys[prop] == 'userID'|| facebooKeys[prop] == 'graphDomain'){
+                        data.append(facebooKeys[prop],facebookValues[prop])
+                      }
+                  }
+
+                  return data
+                }
+    
+            };
           
-          for( prop in facebooKeys){
-            if(facebooKeys[prop] == 'name' || facebooKeys[prop] == 'email' || facebooKeys[prop] == 'userID'|| facebooKeys[prop] == 'graphDomain'){
-              data.append(facebooKeys[prop],facebookValues[prop])
-            }
-          }
-          
-          data.append('typeUserId', 1)
-          data.append('bloodtypeId', 1)
-          
-      
           fetch(url, {
             method: "POST",
-            body: data,
+            body: setData(),
             mode: "cors",
           })
           .then((response) => {
             if (response.ok) {
-      
-              // session.openSession(res.userID);
-              // session.redirect("/Usuario_Sangre");
-              return true
-             
+              setData('userId' ,res.userID);
+              setRedir("/Usuario_Sangre");
             } else {
               console.log("Error in fetch");
             }
@@ -59,35 +65,25 @@ const LoginLocal = () =>{
     
         const verify = () => {
     
-          var url = 'http://localhost:7000/api/:'+res.userID;
+          var url = 'http://localhost:7000/api/user/:'+res.userID;
     
           fetch(url)
             .then((data) => data.json())
-            .then((user) => {
-              if(response.ok){
-                if(user != []){
-                  if(user.userIdDomain == res.userID){
-                    // session.openSession(res.userID);
-                    // session.redirect("/Usuario_Sangre")
-                    return true
-                  }else{
-                    sendUserInfo()
-                  }
-                }else{
-                  sendUserInfo()
-                }
-              }else{
+            .then((data) => {
+              if (data) {
+                setData('userId' ,res.userID);
+                setRedir("/Usuario_Sangre");
+              } else {
+                console.log('No se encuentra en la base de datos');
                 sendUserInfo()
               }
-              console.log(users)
             })
             .catch((error) => {
               console.log(error);
             });
         };
-        verify()
-      }
-
+        verify() 
+    }    
     return(
 
         <div className='signupLocal'>
@@ -102,7 +98,7 @@ const LoginLocal = () =>{
 
             <div className='fila'>
                 <div>
-                    {/* <LoginG></LoginG> */}
+                    <LoginG ></LoginG>
                 </div>
                 <div>
                     <LoginFB responseFacebook={responseFacebook}></LoginFB>
@@ -113,5 +109,5 @@ const LoginLocal = () =>{
     )
 }
 
-export default LoginLocal
+export default Register
 

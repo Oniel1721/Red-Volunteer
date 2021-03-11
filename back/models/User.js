@@ -1,26 +1,15 @@
-const {Model, DataTypes} = require('sequelize');
-const { database } = require('../db_connection');
-const sequelize = require('../database');
+const {Schema, model} = require('mongoose');
 
-class User extends Model{}
-User.init({
-    userId:{
-        type:DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    },
-    name:DataTypes.STRING,
-    email:DataTypes.STRING,
-    password:DataTypes.STRING,
-    typeUserId:DataTypes.INTEGER,
-    bloodtypeId:DataTypes.INTEGER,
-    useridDomain:DataTypes.INTEGER,
-    graphDomain:DataTypes.STRING
-    // birthdate:DataTypes.DATE
-},{
-    sequelize,
-    timestamps:false,
-    modelName:"user"
-});
+const newUser = new Schema({
+    
+    name: {type: String, required: true},
+    email: {type: String, unique: true},
+    typeUser:{type:String, default: 1},
+    bloodtype:{type:String, default: 1},
+    useridDomain:{type:Number, required: true},
+    graphDomain:{type: String, required: true},
+    createdAt:{type: Date, default: Date.now}
 
-module.exports = User;
+})
+
+module.exports = model('User',newUser)
